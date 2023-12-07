@@ -3,7 +3,7 @@ package dev.pichborith.cruddemo.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "student")
+@Table(name = "students")
 public class Student {
 
     //    define fields
