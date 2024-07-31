@@ -36,7 +36,9 @@ public class CruddemoApplication {
 
 //            createInstructorWithCourses(appDAO);
 
-            findInstructorWithCourses(appDAO);
+//            findInstructorWithCourses(appDAO);
+
+            findInstructorWithCoursesJoinFetch(appDAO);
         };
     }
 
@@ -146,6 +148,20 @@ public class CruddemoApplication {
         // this line going to throw exception, because the default fetch type of OneToMany is "Lazy"
         // so Hibernate didn't load any course from database yet.
         // fix it by get course with method above
+        System.out.println(
+            "the associated courses: " + tempInstructor.getCourses());
+
+        System.out.println("Done!");
+    }
+
+    private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
+        int theId = 2;
+
+        System.out.println("Finding instructor id: " + theId);
+        Instructor tempInstructor = appDAO.findInstructorByIdJoinFetch(theId);
+
+        System.out.println("tempInstructor: " + tempInstructor);
+
         System.out.println(
             "the associated courses: " + tempInstructor.getCourses());
 
