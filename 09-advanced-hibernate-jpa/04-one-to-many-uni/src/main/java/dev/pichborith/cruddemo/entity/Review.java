@@ -16,9 +16,8 @@ public class Review {
 
     public Review() {}
 
-    public Review(String comment, int id) {
+    public Review(String comment) {
         this.comment = comment;
-        this.id = id;
     }
 
     public String getComment() {

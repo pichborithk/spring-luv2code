@@ -4,6 +4,7 @@ import dev.pichborith.cruddemo.dao.AppDAO;
 import dev.pichborith.cruddemo.entity.Course;
 import dev.pichborith.cruddemo.entity.Instructor;
 import dev.pichborith.cruddemo.entity.InstructorDetail;
+import dev.pichborith.cruddemo.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -46,7 +47,7 @@ public class CruddemoApplication {
 
 //            deleteCourse(appDAO);
 
-
+            createCourseAndReviews(appDAO);
         };
 
     }
@@ -215,4 +216,18 @@ public class CruddemoApplication {
 
         System.out.println("Done!");
     }
-}
+
+    private void createCourseAndReviews(AppDAO appDAO) {
+        Course tempCourse = new Course(
+            "Pacman - How to Score One Million Points");
+
+        tempCourse.addReview(new Review("Great course... loved it!"));
+        tempCourse.addReview(new Review("Cool course, job well done."));
+        tempCourse.addReview(new Review("What a dumb course, you are an idiot!"));
+
+        System.out.println("Saving Course: " + tempCourse);
+        appDAO.save(tempCourse);
+
+        System.out.println("Done!");
+
+    }}
