@@ -42,7 +42,9 @@ public class CruddemoApplication {
 
 //            updateInstructor(appDAO);
 
-            updateCourse(appDAO);
+//            updateCourse(appDAO);
+
+            deleteCourse(appDAO);
         };
 
     }
@@ -199,6 +201,15 @@ public class CruddemoApplication {
         tempCourse.setTitle("Enjoy the Simple Things");
 
         appDAO.update(tempCourse);
+
+        System.out.println("Done!");
+    }
+
+    private void deleteCourse(AppDAO appDAO) {
+        int theId = 10;
+
+        System.out.println("Deleting course id: " + theId);
+        appDAO.deleteCourseById(theId);
 
         System.out.println("Done!");
     }
