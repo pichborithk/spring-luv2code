@@ -3,6 +3,7 @@ package dev.pichborith.cruddemo.dao;
 import dev.pichborith.cruddemo.entity.Course;
 import dev.pichborith.cruddemo.entity.Instructor;
 import dev.pichborith.cruddemo.entity.InstructorDetail;
+import dev.pichborith.cruddemo.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -144,5 +145,45 @@ public class AppDAOImpl implements AppDAO {
         // execute query
         return query.getSingleResult();
 
+    }
+
+    @Override
+    public Course findCourseAndStudentsByCourseId(int theId) {
+        // create query
+        TypedQuery<Course> query = entityManager.createQuery(
+            "SELECT c FROM Course c JOIN FETCH c.students WHERE c.id = :data", Course.class);
+
+        // set parameter value for query
+        query.setParameter("data", theId);
+
+        // execute query
+        return query.getSingleResult();
+    }
+
+    @Override
+    public Student findStudentAndCoursesByStudentId(int theId) {
+        // create query
+        TypedQuery<Student> query = entityManager.createQuery(
+            "SELECT s FROM Student s JOIN FETCH s.courses WHERE s.id = :data", Student.class);
+
+        // set parameter value for query
+        query.setParameter("data", theId);
+
+        // execute query
+        return query.getSingleResult();
+    }
+
+    @Override
+    @Transactional
+    public void update(Student tempStudent) {
+        entityManager.merge(tempStudent);
+    }
+
+    @Override
+    @Transactional
+    public void deleteStudentById(int theid) {
+        Student tempStudent = entityManager.find(Student.class, theid);
+
+        entityManager.remove(tempStudent);
     }
 }
