@@ -34,7 +34,7 @@ public class CruddemoApplication {
 
 //            createInstructorWithCourses(appDAO);
 
-//            findInstructorWithCourses(appDAO);
+            findInstructorWithCourses(appDAO);
 
 //            findInstructorWithCoursesJoinFetch(appDAO);
 
@@ -58,7 +58,7 @@ public class CruddemoApplication {
 
 //            addMoreCoursesForStudent(appDAO);
 
-            deleteStudent(appDAO);
+//            deleteStudent(appDAO);
         };
 
     }

@@ -181,8 +181,8 @@ public class AppDAOImpl implements AppDAO {
 
     @Override
     @Transactional
-    public void deleteStudentById(int theid) {
-        Student tempStudent = entityManager.find(Student.class, theid);
+    public void deleteStudentById(int theId) {
+        Student tempStudent = entityManager.find(Student.class, theId);
 
         entityManager.remove(tempStudent);
     }
